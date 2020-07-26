@@ -1,0 +1,27 @@
+{
+  "name": "doctype_admin/doctype_shop",
+  "description": "Doctype Admin Shop Plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pratik Shrestha",
+      "email": "pratikdai404@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "orchestra/testbench": "^6.0@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "doctype_admin\\Shop\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "doctype_admin\\Shop\\ShopServiceProvider"
+      ]
+    }
+  }
+}
