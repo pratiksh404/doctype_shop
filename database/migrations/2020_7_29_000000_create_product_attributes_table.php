@@ -17,8 +17,11 @@ class CreateProductAttributesTable extends Migration
     {
         Schema::create('product_attributes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('attribute');
-            $table->string('attribute_values');
+            $table->string('product_attribute_code')->unique();
+            $table->string('product_attribute_name');
+            $table->integer('input_type');
+            $table->boolean('is_filterable')->default(0);
+            $table->boolean('is_required')->default(0);
             $table->timestamps();
         });
     }

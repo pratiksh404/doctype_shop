@@ -18,10 +18,9 @@ class ShopServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->commands([
+        /*         $this->commands([
             Console\DoctypeAdminShopInstallerCommand::class
-        ]);
-    }
+        ]); */ }
 
     protected function registerResources()
     {
@@ -62,7 +61,7 @@ class ShopServiceProvider extends ServiceProvider
     {
         return [
             'prefix' => config('shop.prefix', 'admin'),
-            'namespace' => 'doctype_admin\shop\Http\Controllers',
+            'namespace' => 'doctype_admin\Shop\Http\Controllers',
             'middleware' => config('shop.middleware', ['web', 'auth', 'activity', 'role:admin'])
         ];
     }
