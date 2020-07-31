@@ -8,8 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{url(config('landing.prefix','admin').'/'.'productCategory').'/'.$category->id}}"
-                method="POST">
+            <form action="{{url(config('landing.prefix','admin').'/'.'category').'/'.$category->id}}" method="POST">
                 @method('DELETE')
                 @csrf
                 <div class="modal-body">

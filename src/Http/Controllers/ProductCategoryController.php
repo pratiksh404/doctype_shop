@@ -5,33 +5,44 @@ namespace doctype_admin\Shop\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use doctype_admin\Shop\Models\ProductCategory;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ProductCategoryController extends Controller
 {
     public function index()
     {
-        /* $product_categories = ProductCategory::all(); */
-        return view('shop::category.index');
+        $product_categories = ProductCategory::all();
+        return view('shop::category.index', compact('product_categories'));
+    }
+
+    public function create()
+    {
+        return view('shop::category.create');
     }
 
     public function store(Request $request)
     {
-        $product_category = ProductCategory::create($this->validateData());
-        $this->uploadImage($product_category);
-        redirect(config('shop.prefix', 'admin') .  '/productCategory');
+        $category = ProductCategory::create($this->validateData());
+        $this->uploadImage($category);
+        return redirect(config('shop.prefix', 'admin') .  '/category');
     }
 
-    public function update(Request $request, ProductCategory $product_category)
+    public function edit(ProductCategory $category)
     {
-        $product_category->update($this->validateData());
-        $this->uploadImage($product_category);
-        redirect(config('shop.prefix', 'admin') .  '/productCategory');
+        return view('shop::category.edit', compact('category'));
     }
 
-    public function destroy(ProductCategory $product_category)
+    public function update(Request $request, ProductCategory $category)
     {
-        $product_category->delete();
-        return redirect(config('shop.prefix', 'admin') .  '/productCategory');
+        $category->update($this->validateData());
+        $this->uploadImage($category);
+        return redirect(config('shop.prefix', 'admin') .  '/category');
+    }
+
+    public function destroy(ProductCategory $category)
+    {
+        $category->delete();
+        return redirect(config('shop.prefix', 'admin') .  '/category');
     }
 
     private function validateData()
@@ -44,12 +55,12 @@ class ProductCategoryController extends Controller
                 'category_featured' => 'required|numeric'
             ]),
             function () {
-                request()->has('category_image') ? request()->validate(['category_image' => 'sometimes|file|image|max:2000']) : '';
+                request()->has('category_image') ? request()->validate(['category_image' => 'sometimes|file|image|max:3000']) : '';
             }
         );
     }
 
-    private function uploadImage($product_category)
+    private function uploadImage($category)
     {
         $category_thumbnails = [
             'storage' => 'uploads/shop/product/category',
@@ -71,6 +82,12 @@ class ProductCategoryController extends Controller
                 ]
             ]
         ];
-        return $product_category->makeThumbnail('category_image', $category_thumbnails);
+        return $category->makeThumbnail('category_image', $category_thumbnails);
+    }
+
+    public function check_category_slug(Request $request)
+    {
+        $slug = SlugService::createSlug(ProductCategory::class, 'category_slug', $request->category_name);
+        return response()->json(['category_slug' => $slug]);
     }
 }

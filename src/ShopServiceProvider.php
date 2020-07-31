@@ -24,7 +24,7 @@ class ShopServiceProvider extends ServiceProvider
 
     protected function registerResources()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migartions');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadFactoriesFrom(__DIR__ . '/../database/factories');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'shop');
         $this->registerRoutes();

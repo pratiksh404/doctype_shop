@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateProductSubCategoriesTable extends Migration
@@ -19,6 +20,7 @@ class CreateProductSubCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_category_id');
             $table->string('sub_category_name');
+            $table->string('sub_category_slug')->unique();
             $table->text('sub_category_description')->nullable();
             $table->string('sub_category_icon')->nullable();
             $table->string('sub_category_image')->nullable();

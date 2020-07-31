@@ -22,14 +22,18 @@
         <input type="file" name="category_image" id="category_image">
     </div>
     <div class="col-lg-2">
-        <input type="hidden" name="category_featured" value="0">
         <label for="category_featured">Featured ? </label>
-        <input type="radio" name="category_featured" id="category_featured" value="1">
+        <input type="hidden" name="category_featured" value="0">
+        <input type="checkbox" id="category_featured" name="category_featured"
+            {{!empty($category) ? $category->category_featured ? 'checked' : '' : ''}} data-bootstrap-switch
+            data-off-color="danger" data-on-color="success" value="1">
     </div>
 </div>
 <br>
 <div class="row">
     <div class="col-lg-12">
-        <textarea name="category_description" id="category_description" class="textarea" cols="30" rows="10"></textarea>
+        <textarea name="category_description" id="category_description" class="textarea" cols="30"
+            rows="10">{{$category->category_description ?? ''}}</textarea>
     </div>
 </div>
+<input type="submit" class="btn btn-primary btn-block" value="Submit">
