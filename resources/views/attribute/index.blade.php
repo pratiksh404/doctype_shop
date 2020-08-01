@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Product Sub Category')
+@section('title', 'Product Attribute')
 
 @section('content_header')
 
@@ -9,13 +9,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Product Sub Category</h1>
+                <h1>Product Attribute</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a
                             href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Product Sub Category</li>
+                    <li class="breadcrumb-item active">Product Attribute</li>
                 </ol>
             </div>
         </div>
@@ -32,10 +32,10 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Make Product Sub Category</h3>
+                    <h3 class="card-title">Make Product Attribute</h3>
                     <button type="button" class="btn btn-default">
-                        <a href="{{url(config('setting.prefix', 'admin/shop') . '/subcategory/create')}}">Create Sub
-                            Product Category</a>
+                        <a href="{{url(config('setting.prefix', 'admin/shop') . '/attribute/create')}}">Create Product
+                            Attribute</a>
                     </button>
                 </div>
             </div>
@@ -43,57 +43,54 @@
                 <table id="datatable" class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Status</th>
-                            <th>Parent Category</th>
-                            <th>Sub Category</th>
-                            <th>Slug</th>
-                            <th>Icon</th>
-                            <th>Image</th>
+                            <th>Attribute Code</th>
+                            <th>Attribute Name</th>
+                            <th>Input Type</th>
+                            <th>Filterable ?</th>
+                            <th>Required ?</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (!empty($product_sub_categories))
-                        @foreach ($product_sub_categories as $subcategory)
+                        @if (!empty($product_attributes))
+                        @foreach ($product_attributes as $attribute)
                         <tr>
+                            <td>{{ $attribute->product_attribute_code }}</td>
+                            <td>{{ $attribute->product_attribute_name }}</td>
+                            <td>{{ $attribute->input_type }}</td>
                             <td><i
-                                    class="fa fa-dot-circle text-{{$subcategory->sub_category_status ? 'success' : 'danger'}}"></i>
+                                    class="fa fa-dot-circle text-{{ $attribute->is_filterable ? 'success' : 'danger'}}"></i>
                             </td>
-                            <td>{{ $subcategory->category->category_name }}</td>
-                            <td>{{$subcategory->sub_category_name}}</td>
-                            <td>{{ $subcategory->sub_category_slug }}</td>
-                            <td><i class="{{ $subcategory->sub_category_icon }}" style="font-size:2em"></i></td>
-                            <td><img src="{{asset($subcategory->thumbnail('sub_category_image','small'))}}"
-                                    alt="{{ $subcategory->sub_category_name }}"></td>
+                            <td><i
+                                    class="fa fa-dot-circle text-{{ $attribute->is_required ? 'success' : 'danger'}}"></i>
+                            </td>
                             <td class="d-flex justify-content-around">
 
                                 <a
-                                    href="{{url(config('shop.prefix', 'admin/shop') . '/subcategory') .'/'.$subcategory->id.'/'.'edit'}}"><button
+                                    href="{{url(config('shop.prefix', 'admin/shop') . '/attribute') .'/'.$attribute->id.'/'.'edit'}}"><button
                                         class="btn btn-warning"><i class="fa fa-edit"></i></button></a>
 
 
                                 <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#sub-category-delete-{{ $subcategory->id }}">
+                                    data-target="#attribute-delete-{{ $attribute->id }}">
                                     <i class="fas fa-trash"></i>
                                 </button>
 
-                                {{-- ------------------- Delete Product Sub Category Modal ---------------------------}}
-                                @include('shop::layouts.sub_category.delete_modal')
-                                {{-- -------------------- End Delete Product Sub Category Modal--------------------------- --}}
+                                {{-- ------------------- Delete Product Attribute Modal ---------------------------}}
+                                @include('shop::layouts.attribute.delete_modal')
+                                {{-- -------------------- End Delete Product Attribute Modal--------------------------- --}}
                             </td>
-                            {{--  @include('blog::layouts.category.confirm_delete') --}}
+                            {{--  @include('blog::layouts.Attribute.confirm_delete') --}}
                         </tr>
                         @endforeach
                         @endif
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Status</th>
-                            <th>Parent Category</th>
-                            <th>Sub Category</th>
-                            <th>Slug</th>
-                            <th>Icon</th>
-                            <th>Image</th>
+                            <th>Attribute Name</th>
+                            <th>Input Type</th>
+                            <th>Filterable ?</th>
+                            <th>Required ?</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>

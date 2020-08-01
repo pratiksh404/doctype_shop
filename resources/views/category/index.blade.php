@@ -14,7 +14,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a
-                            href="{{ url(config('setting.prefix', 'admin') . '/' . 'dashboard') }}">Home</a></li>
+                            href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'dashboard') }}">Home</a></li>
                     <li class="breadcrumb-item active">Product Category</li>
                 </ol>
             </div>
@@ -34,7 +34,7 @@
                 <div class="d-flex justify-content-between">
                     <h3 class="card-title">Make Product Category</h3>
                     <button type="button" class="btn btn-default">
-                        <a href="{{url(config('setting.prefix', 'admin') . '/category/create')}}">Create Product
+                        <a href="{{url(config('setting.prefix', 'admin/shop') . '/category/create')}}">Create Product
                             Category</a>
                     </button>
                 </div>
@@ -64,7 +64,7 @@
                             <td class="d-flex justify-content-around">
 
                                 <a
-                                    href="{{url(config('shop.prefix', 'admin') . '/category') .'/'.$category->id.'/'.'edit'}}"><button
+                                    href="{{url(config('shop.prefix', 'admin/shop') . '/category') .'/'.$category->id.'/'.'edit'}}"><button
                                         class="btn btn-warning"><i class="fa fa-edit"></i></button></a>
 
 

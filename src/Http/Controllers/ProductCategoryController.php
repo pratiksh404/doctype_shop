@@ -24,7 +24,7 @@ class ProductCategoryController extends Controller
     {
         $category = ProductCategory::create($this->validateData());
         $this->uploadImage($category);
-        return redirect(config('shop.prefix', 'admin') .  '/category');
+        return redirect(config('shop.prefix', 'admin/shop') .  '/category');
     }
 
     public function edit(ProductCategory $category)
@@ -36,13 +36,13 @@ class ProductCategoryController extends Controller
     {
         $category->update($this->validateData());
         $this->uploadImage($category);
-        return redirect(config('shop.prefix', 'admin') .  '/category');
+        return redirect(config('shop.prefix', 'admin/shop') .  '/category');
     }
 
     public function destroy(ProductCategory $category)
     {
         $category->delete();
-        return redirect(config('shop.prefix', 'admin') .  '/category');
+        return redirect(config('shop.prefix', 'admin/shop') .  '/category');
     }
 
     private function validateData()

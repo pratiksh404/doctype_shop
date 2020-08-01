@@ -12,4 +12,14 @@ class ProductAttribute extends Model
     {
         return $this->hasMany(ProductAttributeValue::class, 'product_attribute_id');
     }
+
+    public function getInputTypeAttribute($attribute)
+    {
+        return [
+            1 => "Drop Down",
+            2 => "Radio",
+            3 => "Text",
+            4 => "Text Area"
+        ][$attribute];
+    }
 }

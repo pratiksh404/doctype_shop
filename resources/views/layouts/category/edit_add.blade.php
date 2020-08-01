@@ -2,12 +2,12 @@
     <div class="col-lg-6">
         <label for="category_name">Product Category Name <span class="text-danger">*</span></label>
         <input type="text" name="category_name" id="category_name" class="form-control"
-            value="{{ $category->category_name ?? old('category_name') }}" placeholder="Product Category Name">
+            value="{{ $category->category_name ?? old('category_name') }}" placeholder="Product Category Name" required>
     </div>
     <div class="col-lg-6">
         <label for="category_slug">Product Category Slug <span class="text-danger">*</span></label>
         <input type="text" name="category_slug" id="category_slug" class="form-control"
-            value="{{ $category->category_slug ?? old('category_slug') }}" placeholder="Product Category Slug">
+            value="{{ $category->category_slug ?? old('category_slug') }}" placeholder="Product Category Slug" required>
     </div>
 </div>
 <br>

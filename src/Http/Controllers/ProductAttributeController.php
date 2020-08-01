@@ -10,32 +10,43 @@ class ProductAttributeController extends Controller
 {
     public function index()
     {
-        return view('store::attribute.index');
+        $product_attributes = ProductAttribute::all();
+        return view('shop::attribute.index', compact('product_attributes'));
+    }
+
+    public function create()
+    {
+        return view('shop::attribute.create');
     }
 
     public function store(Request $request)
     {
         ProductAttribute::create($this->validateData());
-        return redirect(config('shop.prefix', 'admin') .  '/productAttribute');
+        return redirect(config('shop.prefix', 'admin/shop') .  '/attribute');
     }
 
-    public function update(Request $request, ProductAttribute $product_attribute)
+    public function edit(ProductAttribute $attribute)
     {
-        $product_attribute->update($this->validateData($product_attribute->id));
-        return redirect(config('shop.prefix', 'admin') .  '/productAttribute');
+        return view('shop::attribute.edit', compact('attribute'));
     }
 
-    public function destroy(ProductAttribute $product_attribute)
+    public function update(Request $request, ProductAttribute $attribute)
     {
-        $product_attribute->delete();
-        return redirect(config('shop.prefix', 'admin') .  '/productAttribute');
+        $attribute->update($this->validateData($attribute->id));
+        return redirect(config('shop.prefix', 'admin/shop') .  '/attribute');
+    }
+
+    public function destroy(ProductAttribute $attribute)
+    {
+        $attribute->delete();
+        return redirect(config('shop.prefix', 'admin/shop') .  '/attribute');
     }
 
     private function validateData($id = null)
     {
         return request()->validate([
-            'product_attribute_code' => 'required|max:50|unique:product_attributes,code,' . $id ?? '',
-            'product_attribute_name' => 'requierd|max:100',
+            'product_attribute_code' => 'required|max:50|unique:product_attributes,product_attribute_code,' . $id ?? '',
+            'product_attribute_name' => 'required|max:100',
             'input_type' => 'required|numeric',
             'is_filterable' => 'required|bool',
             'is_required' => 'required|bool',

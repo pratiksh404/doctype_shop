@@ -60,7 +60,7 @@ class ShopServiceProvider extends ServiceProvider
     private function routeConfiguration()
     {
         return [
-            'prefix' => config('shop.prefix', 'admin'),
+            'prefix' => config('shop.prefix', 'admin/shop'),
             'namespace' => 'doctype_admin\Shop\Http\Controllers',
             'middleware' => config('shop.middleware', ['web', 'auth', 'activity', 'role:admin'])
         ];

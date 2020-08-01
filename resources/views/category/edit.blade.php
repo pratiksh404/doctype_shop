@@ -14,7 +14,10 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a
-                            href="{{ url(config('setting.prefix', 'admin') . '/' . 'dashboard') }}">Home</a></li>
+                            href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a
+                            href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'category') }}">Category</a>
+                    </li>
                     <li class="breadcrumb-item active">Edit Product Category</li>
                 </ol>
             </div>
@@ -33,8 +36,8 @@
             </div>
             <div class="card-body">
                 @if (!empty($category))
-                <form action="{{ url(config('shop.prefix', 'admin') . '/category') .'/'.$category->id}}" method="post"
-                    enctype="multipart/form-data">
+                <form action="{{ url(config('shop.prefix', 'admin/shop') . '/category') .'/'.$category->id}}"
+                    method="post" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
                     @include('shop::layouts.category.edit_add')

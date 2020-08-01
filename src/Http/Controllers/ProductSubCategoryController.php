@@ -12,7 +12,7 @@ class ProductSubCategoryController extends Controller
 {
     public function index()
     {
-        $product_sub_categories = ProductSubCategory::with('category');
+        $product_sub_categories = ProductSubCategory::with('category')->get();
         return view('shop::sub_category.index', compact('product_sub_categories'));
     }
 
@@ -24,31 +24,37 @@ class ProductSubCategoryController extends Controller
 
     public function store(Request $request)
     {
-        $productSubCategory = ProductSubCategory::create($this->validateData());
-        $this->uploadImage($productSubCategory);
-        redirect(config('shop.prefix', 'admin') .  '/product-sub-category');
+        $subcategory = ProductSubCategory::create($this->validateData());
+        $this->uploadImage($subcategory);
+        return redirect(config('shop.prefix', 'admin/shop') .  '/subcategory');
     }
 
-    public function update(Request $request, ProductSubCategory $productSubCategory)
+    public function edit(Request $request, ProductSubCategory $subcategory)
     {
-        $productSubCategory->update($this->validateData($productSubCategory));
-        $this->uploadImage($productSubCategory);
-        redirect(config('shop.prefix', 'admin') .  '/product-sub-category');
+        $product_categories = ProductCategory::all(['id', 'category_name']);
+        return view('shop::sub_category.edit', compact('subcategory', 'product_categories'));
     }
 
-    public function destroy(ProductSubCategory $productSubCategory)
+    public function update(Request $request, ProductSubCategory $subcategory)
     {
-        $productSubCategory->delete();
-        return redirect(config('shop.prefix', 'admin') .  '/product-sub-category');
+        $subcategory->update($this->validateData($subcategory));
+        $this->uploadImage($subcategory);
+        return redirect(config('shop.prefix', 'admin/shop') .  '/subcategory');
     }
 
-    private function validateData($productSubCategory = null)
+    public function destroy(ProductSubCategory $subcategory)
+    {
+        $subcategory->delete();
+        return redirect(config('shop.prefix', 'admin/shop') .  '/subcategory');
+    }
+
+    private function validateData($subcategory = null)
     {
         return tap(
             request()->validate([
                 'product_category_id' => 'required|numeric',
                 'sub_category_name' => 'required|max:100',
-                'sub_category_slug' => 'required|max:100:unique:product_sub_categories,sub_category_slug,' . $productSubCategory ?? $productSubCategory->id,
+                'sub_category_slug' => 'required|max:100:unique:product_sub_categories,sub_category_slug,' . $subcategory ?? $subcategory->id,
                 'sub_category_description' => 'sometimes|max:2000',
                 'sub_category_icon' => 'sometimes|max:50',
                 'sub_category_featured' => 'required|numeric',
@@ -60,7 +66,7 @@ class ProductSubCategoryController extends Controller
         );
     }
 
-    private function uploadImage($productSubCategory)
+    private function uploadImage($subcategory)
     {
         $category_thumbnails = [
             'storage' => 'uploads/shop/product/subCategory',
@@ -82,7 +88,7 @@ class ProductSubCategoryController extends Controller
                 ]
             ]
         ];
-        return $productSubCategory->makeThumbnail('sub_category_image', $category_thumbnails);
+        return $subcategory->makeThumbnail('sub_category_image', $category_thumbnails);
     }
 
     public function check_sub_category_slug(Request $request)

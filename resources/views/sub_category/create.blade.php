@@ -14,7 +14,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a
-                            href="{{ url(config('setting.prefix', 'admin') . '/' . 'dashboard') }}">Home</a></li>
+                            href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'dashboard') }}">Home</a></li>
                     <li class="breadcrumb-item active">Create Sub Product Category</li>
                 </ol>
             </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="card-body">
 
-                <form action="{{ url(config('shop.prefix', 'admin') . '/subcategory')}}" method="post"
+                <form action="{{ url(config('shop.prefix', 'admin/shop') . '/subcategory')}}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     @include('shop::layouts.sub_category.edit_add')
