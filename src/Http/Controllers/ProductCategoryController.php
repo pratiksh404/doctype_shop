@@ -34,7 +34,7 @@ class ProductCategoryController extends Controller
 
     public function update(Request $request, ProductCategory $category)
     {
-        $category->update($this->validateData());
+        $category->update($this->validateData($category));
         $this->uploadImage($category);
         return redirect(config('shop.prefix', 'admin/shop') .  '/category');
     }
@@ -45,11 +45,12 @@ class ProductCategoryController extends Controller
         return redirect(config('shop.prefix', 'admin/shop') .  '/category');
     }
 
-    private function validateData()
+    private function validateData($category = null)
     {
         return tap(
             request()->validate([
                 'category_name' => 'required|max:100',
+                'category_slug' => 'required|max:100:unique:product_categories,category_slug,' . $category ?? $category->id,
                 'category_description' => 'sometimes|max:2000',
                 'category_icon' => 'sometimes|max:50',
                 'category_featured' => 'required|numeric'
@@ -63,7 +64,7 @@ class ProductCategoryController extends Controller
     private function uploadImage($category)
     {
         $category_thumbnails = [
-            'storage' => 'uploads/shop/product/category',
+            'storage' => 'uploads/shop/category',
             'width' => '600',
             'height' => '400',
             'quality' => '80',

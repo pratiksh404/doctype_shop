@@ -6,7 +6,7 @@
         <select class="form-control select2" style="width: 100%;" name="product_category_id">
             @foreach ($product_categories as $parent_category)
             <option value="{{$parent_category->id}}"
-                {{$parent_category->id == $subcategory->product_category_id ? 'selected' : ''}}>
+                {{isset($subcategory) ? $parent_category->id == $subcategory->product_category_id ? 'selected' : '' : ''}}>
                 {{$parent_category->category_name}}</option>
             @endforeach
         </select>

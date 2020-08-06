@@ -69,7 +69,7 @@ class ProductSubCategoryController extends Controller
     private function uploadImage($subcategory)
     {
         $category_thumbnails = [
-            'storage' => 'uploads/shop/product/subCategory',
+            'storage' => 'uploads/shop/subCategory',
             'width' => '600',
             'height' => '400',
             'quality' => '80',

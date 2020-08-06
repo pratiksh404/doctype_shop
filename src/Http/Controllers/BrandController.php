@@ -49,7 +49,7 @@ class BrandController extends Controller
     private function uploadImage($product_brand)
     {
         $brand_thumbnails = [
-            'storage' => 'uploads/shop/product/brand',
+            'storage' => 'uploads/shop/brand',
             'width' => '300',
             'height' => '300',
             'quality' => '80',
