@@ -31,11 +31,14 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Create Product</h3>
+                <div class="d-flex justify-content-between">
+                    <h3 class="card-title">Create Product</h3>
+                    <span class="show_product_code textx-secondary"></span>
+                </div>
             </div>
             <div class="card-body">
-
-                <form action="{{ url(config('shop.prefix', 'admin/shop') . '/product')}}" method="post"
+                @include('shop::layouts.product.stepper')
+                <form action="{{ url(config('shop.prefix', 'admin/shop') . '/product') }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     @include('shop::layouts.product.edit_add')

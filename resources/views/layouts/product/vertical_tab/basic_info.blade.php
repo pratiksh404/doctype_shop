@@ -1,9 +1,16 @@
 <div class="row">
     <input type="hidden" value="{{\Auth::check() ? \Auth::user()->id : ''}}">
+    <input type="text" name="product_code" class="product_code" id="product_code" value="" hidden>
     <div class="col-lg-12">
         <label for="product_name">Product Name<span class="text-danger">*</span></label>
         <input type="text" name="product_name" id="product_name" class="form-control"
             value="{{$product->product_name ?? old('product_name')}}" placeholder="Product Name">
+    </div>
+    <br><br>
+    <div class="col-lg-12">
+        <label for="product_slug">Product Slug<span class="text-danger">*</span></label>
+        <input type="text" name="product_slug" id="product_slug" class="form-control"
+            value="{{$product->product_slug ?? old('product_slug')}}" placeholder="Product Slug">
     </div>
 </div>
 <br>
@@ -44,14 +51,16 @@
 <div class="row">
     <div class="col-lg-12">
         <label for="product_excerpt">Product Excerpt<span class="text-danger">*</span></label>
-        <textarea name="product_excerpt" id="product_excerpt" class="textarea"></textarea>
+        <textarea name="product_excerpt" id="product_excerpt"
+            class="textarea">{{$product->product_excerpt ?? old('product_excerpt')}}</textarea>
     </div>
 </div>
 <br>
 <div class="row">
     <div class="col-lg-12">
         <label for="product_description">Product Description</label>
-        <textarea name="product_description" id="product_description" class="textarea"></textarea>
+        <textarea name="product_description" id="product_description"
+            class="textarea">{{$product->product_description ?? old('product_description')}}</textarea>
     </div>
 </div>
 <div class="row">

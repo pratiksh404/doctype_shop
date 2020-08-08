@@ -21,6 +21,26 @@
                 "info": true,
             });
 
+               // Product Code Geneation
+            $('document').ready(function(){
+                if($('#product_code').val().length == 0)
+                    {
+                    var code = 'product_' + Math.floor((Math.random() * 10000) + 1);
+                    $('#product_code').val(code);
+                    $('.show_product_code').text(code);
+                    }
+                });
+
+                $('#product_name').change(function(e) {
+                    $.get('{{ route('check_product_slug') }}',
+                      { 'product_name': $(this).val() },
+                        function( data ) {
+                        $('#product_slug').val(data.product_slug);
+                      }
+                    );
+                });
+
         });
+
 
 </script>

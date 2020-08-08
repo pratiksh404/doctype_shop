@@ -1,36 +1,61 @@
-<div class="row">
-    <div class="col-5 col-sm-3">
-        <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="vert-tabs-basic-info-tab" data-toggle="pill" href="#vert-tabs-basic-info"
-                role="tab" aria-controls="vert-tabs-basic-info" aria-selected="true">Basic Info</a>
-            <a class="nav-link" id="vert-tabs-product-image-tab" data-toggle="pill" href="#vert-tabs-product-image"
-                role="tab" aria-controls="vert-tabs-product-image" aria-selected="false">Product Image</a>
-            <a class="nav-link" id="vert-tabs-product-value-tab" data-toggle="pill" href="#vert-tabs-product-value"
-                role="tab" aria-controls="vert-tabs-product-value" aria-selected="false">Product Value</a>
-            <a class="nav-link" id="vert-tabs-product-seo-tab" data-toggle="pill" href="#vert-tabs-product-seo"
-                role="tab" aria-controls="vert-tabs-product-seo" aria-selected="false">Product SEO</a>
-            <a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab"
-                aria-controls="vert-tabs-settings" aria-selected="false">Settings</a>
+<div class="card card-primary card-tabs">
+    <div class="card-header p-0 pt-1">
+        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="custom-tabs-one-product-information-tab" data-toggle="pill"
+                    href="#custom-tabs-one-product-information" role="tab"
+                    aria-controls="custom-tabs-one-product-information" aria-selected="true">Product Information</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile"
+                    role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill"
+                    href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages"
+                    aria-selected="false">Messages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill"
+                    href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings"
+                    aria-selected="false">Settings</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card-body">
+        <div class="tab-content" id="custom-tabs-one-tabContent">
+            <div class="tab-pane fade show active" id="custom-tabs-one-product-information" role="tabpanel"
+                aria-labelledby="custom-tabs-one-product-information-tab">
+                @include('shop::layouts.product.horizontal_tab.product_information')
+            </div>
+            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+                aria-labelledby="custom-tabs-one-profile-tab">
+                Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula
+                tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas
+                sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus.
+                Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
+            </div>
+            <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel"
+                aria-labelledby="custom-tabs-one-messages-tab">
+                Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi
+                placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique
+                nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna
+                a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus
+                efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex
+                vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget
+                sem eu risus tincidunt eleifend ac ornare magna.
+            </div>
+            <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel"
+                aria-labelledby="custom-tabs-one-settings-tab">
+                Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare
+                sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie
+                tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec
+                pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl
+                commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+            </div>
         </div>
     </div>
-    <div class="col-7 col-sm-9">
-        <div class="tab-content" id="vert-tabs-tabContent">
-            <div class="tab-pane text-left fade show active" id="vert-tabs-basic-info" role="tabpanel"
-                aria-labelledby="vert-tabs-basic-info-tab">
-                @include('shop::layouts.product.vertical_tab.basic_info')
-            </div>
-            <div class="tab-pane fade" id="vert-tabs-product-image" role="tabpanel"
-                aria-labelledby="vert-tabs-product-image-tab">
-                @include('shop::layouts.product.vertical_tab.product_image')
-            </div>
-            <div class="tab-pane fade" id="vert-tabs-product-value" role="tabpanel"
-                aria-labelledby="vert-tabs-product-value-tab">
-                @include('shop::layouts.product.vertical_tab.product_value')
-            </div>
-            <div class="tab-pane fade" id="vert-tabs-product-seo" role="tabpanel"
-                aria-labelledby="vert-tabs-product-seo-tab">
-                @include('shop::layouts.product.vertical_tab.product_seo')
-            </div>
-        </div>
-    </div>
+    <!-- /.card -->
 </div>

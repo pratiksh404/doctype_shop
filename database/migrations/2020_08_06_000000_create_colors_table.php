@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductColorsTable extends Migration
+class CreateColorsTable extends Migration
 {
     /**
      *
@@ -31,6 +31,6 @@ class CreateProductColorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_colors');
+        Schema::drop('colors');
     }
 }

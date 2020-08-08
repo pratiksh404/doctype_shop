@@ -2,8 +2,9 @@
 
 namespace doctype_admin\Shop\Http\Controllers;
 
-use doctype_admin\Shop\Models\Color;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use doctype_admin\Shop\Models\Color;
 
 class ColorController extends Controller
 {
@@ -15,7 +16,7 @@ class ColorController extends Controller
     public function index()
     {
         $colors = Color::all();
-        return view('shop::branch.index', compact('colors'));
+        return view('shop::color.index', compact('colors'));
     }
 
     /**

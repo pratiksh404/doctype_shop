@@ -2,8 +2,9 @@
 
 namespace doctype_admin\Shop\Http\Controllers;
 
-use doctype_admin\Shop\Models\Size;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use doctype_admin\Shop\Models\Size;
 
 class SizeController extends Controller
 {
@@ -14,8 +15,8 @@ class SizeController extends Controller
      */
     public function index()
     {
-        $colors = Color::all();
-        return view('shop::branch.index', compact('colors'));
+        $sizes = Size::all();
+        return view('shop::size.index', compact('sizes'));
     }
 
     /**
@@ -26,8 +27,8 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
-        $color = Color::create($this->validateData());
-        return redirect(config('shop.prefix', 'admin/shop') .  '/color');
+        $size = Size::create($this->validateData());
+        return redirect(config('shop.prefix', 'admin/shop') .  '/size');
     }
 
 
@@ -35,31 +36,31 @@ class SizeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  request
-     * @param  \doctype_admin\Shop\Models\Color  $color
+     * @param  \doctype_admin\Shop\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Color $color)
+    public function update(Request $request, Size $size)
     {
-        $color->update($this->validateData());
-        return redirect(config('shop.prefix', 'admin/shop') .  '/color');
+        $size->update($this->validateData());
+        return redirect(config('shop.prefix', 'admin/shop') .  '/size');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \doctype_admin\Shop\Models\Color  $color
+     * @param  \doctype_admin\Shop\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Color $color)
+    public function destroy(Color $size)
     {
-        $color->delete();
-        return redirect(config('shop.prefix', 'admin/shop') .  '/color');
+        $size->delete();
+        return redirect(config('shop.prefix', 'admin/shop') .  '/size');
     }
 
     private function validateData()
     {
         return request()->validate([
-            'color' => 'required|max:255'
+            'size' => 'required|max:255'
         ]);
     }
 }

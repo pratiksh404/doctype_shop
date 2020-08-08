@@ -1,10 +1,10 @@
 <?php
 
-namespace doctype_admin\Shop;
-
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductSizesTable extends Migration
+class CreateSizesTable extends Migration
 {
     /**
      *
@@ -21,5 +21,18 @@ class CreateProductSizesTable extends Migration
             $table->string('size');
             $table->timestamps();
         });
+    }
+
+    /**
+     *
+     *Drop Table
+     *
+     *@return void
+     *
+     */
+
+    public function down()
+    {
+        Schema::drop('sizes');
     }
 }

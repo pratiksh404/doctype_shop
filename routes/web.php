@@ -17,3 +17,5 @@ Route::resource('/size', 'SizeController');
 Route::get('/check_category_slug', 'ProductCategoryController@check_category_slug')->name('check_category_slug');
 
 Route::get('/check_sub_category_slug', 'ProductSubCategoryController@check_sub_category_slug')->name('check_sub_category_slug');
+
+Route::get('/check_product_slug', 'ProductController@check_product_slug')->name('check_product_slug');
