@@ -1,22 +1,22 @@
-@if (!empty($color))
-<div class="modal fade" id="color-delete-modal-{{$color->id}}">
+@if (!empty($brand))
+<div class="modal fade" id="brand-delete-modal-{{$brand->id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Delete Product Color</h4>
+                <h4 class="modal-title">Delete Product Brand</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{url(config('landing.prefix','admin/shop').'/'.'color').'/'.$color->id}}" method="POST">
+            <form action="{{url(config('landing.prefix','admin/shop').'/'.'brand').'/'.$brand->id}}" method="POST">
                 @method('DELETE')
                 @csrf
                 <div class="modal-body">
-                    <p>Are you sure you want to delete this Product Color ?
+                    <p>Are you sure you want to delete this Product Brand ?
                         <br>
-                        <label>Color Name</label>
+                        <label>Brand Name</label>
                         <br>
-                        {{$color->color}}
+                        {{$brand->brand_name}}
                     </p>
                 </div>
                 <div class="modal-footer justify-content-between">

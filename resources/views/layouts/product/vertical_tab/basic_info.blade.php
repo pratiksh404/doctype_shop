@@ -1,5 +1,5 @@
 <div class="row">
-    <input type="hidden" value="{{\Auth::check() ? \Auth::user()->id : ''}}">
+    <input type="hidden" name="user_id" value="{{\Auth::check() ? \Auth::user()->id : ''}}">
     <input type="text" name="product_code" class="product_code" id="product_code" value="" hidden>
     <div class="col-lg-12">
         <label for="product_name">Product Name<span class="text-danger">*</span></label>

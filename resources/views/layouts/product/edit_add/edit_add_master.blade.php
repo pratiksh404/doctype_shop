@@ -7,8 +7,9 @@
                     aria-controls="custom-tabs-one-product-information" aria-selected="true">Product Information</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile"
-                    role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="custom-tabs-one-product-images-tab" data-toggle="pill"
+                    href="#custom-tabs-one-product-images" role="tab" aria-controls="custom-tabs-one-product-images"
+                    aria-selected="false">Product Images</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill"
@@ -29,13 +30,9 @@
                 aria-labelledby="custom-tabs-one-product-information-tab">
                 @include('shop::layouts.product.horizontal_tab.product_information')
             </div>
-            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
-                aria-labelledby="custom-tabs-one-profile-tab">
-                Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula
-                tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas
-                sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus.
-                Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
+            <div class="tab-pane fade" id="custom-tabs-one-product-images" role="tabpanel"
+                aria-labelledby="custom-tabs-one-product-images-tab">
+                @include('shop::layouts.product.horizontal_tab.product_images')
             </div>
             <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel"
                 aria-labelledby="custom-tabs-one-messages-tab">

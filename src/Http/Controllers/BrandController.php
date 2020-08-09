@@ -2,35 +2,37 @@
 
 namespace doctype_admin\Shop\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use doctype_admin\Shop\Models\Brand;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class BrandController extends Controller
 {
     public function index()
     {
-        /* $product_categories = Productbrand::all(); */
-        return view('shop::brand.index');
+        $brands = Brand::all();
+        return view('shop::brand.index', compact('brands'));
     }
 
     public function store(Request $request)
     {
-        $product_brand = Brand::create($this->validateData());
-        $this->uploadImage($product_brand);
-        redirect(config('shop.prefix', 'admin') .  '/brand');
+        $brand = Brand::create($this->validateData());
+        $this->uploadImage($brand);
+        return redirect(config('shop.prefix', 'admin/shop') .  '/brand');
     }
 
-    public function update(Request $request, Brand $product_brand)
+    public function update(Request $request, Brand $brand)
     {
-        $product_brand->update($this->validateData());
-        $this->uploadImage($product_brand);
-        redirect(config('shop.prefix', 'admin') .  '/brand');
+        $brand->update($this->validateData());
+        $this->uploadImage($brand);
+        return redirect(config('shop.prefix', 'admin/shop') .  '/brand');
     }
 
-    public function destroy(Brand $product_brand)
+    public function destroy(Brand $brand)
     {
-        $product_brand->delete();
-        return redirect(config('shop.prefix', 'admin') .  '/brand');
+        $brand->delete();
+        return redirect(config('shop.prefix', 'admin/shop') .  '/brand');
     }
 
     private function validateData()
@@ -46,7 +48,7 @@ class BrandController extends Controller
         );
     }
 
-    private function uploadImage($product_brand)
+    private function uploadImage($brand)
     {
         $brand_thumbnails = [
             'storage' => 'uploads/shop/brand',
@@ -62,6 +64,12 @@ class BrandController extends Controller
                 ]
             ]
         ];
-        return $product_brand->makeThumbnail('brand_image', $brand_thumbnails);
+        return $brand->makeThumbnail('brand_image', $brand_thumbnails);
+    }
+
+    public function check_brand_slug()
+    {
+        $slug = SlugService::createSlug(Brand::class, 'brand_slug', request()->brand_name);
+        return response()->json(['brand_slug' => $slug]);
     }
 }

@@ -30,7 +30,7 @@
     </div>
     <div class="col-lg-3">
         <label>Sub Category Image</label>
-        <input type="file" class="custom-file-input" id="customFile" name="sub_category_image" id="sub_category_image">
+        <input type="file" class="custom-file-input" name="sub_category_image" id="sub_category_image">
         <label class="custom-file-label" for="sub_category_image">Choose file</label>
     </div>
     <div class="col-lg-3">

@@ -37,12 +37,9 @@
                 </div>
             </div>
             <div class="card-body">
-                @include('shop::layouts.product.stepper')
-                <form action="{{ url(config('shop.prefix', 'admin/shop') . '/product') }}" method="post"
-                    enctype="multipart/form-data">
-                    @csrf
-                    @include('shop::layouts.product.edit_add')
-                </form>
+
+                @include('shop::layouts.product.edit_add.edit_add_master')
+
 
             </div>
         </div>
@@ -54,6 +51,7 @@
 
     @section('css')
     <link rel=" stylesheet" href="{{ asset('css/admin_custom.css') }}">
+    @include('shop::layouts.product.links')
     @stop
 
     @section('js')

@@ -9,9 +9,4 @@
         <label for="product_meta_description">Product SEO Description</label>
         <textarea name="product_meta_description" id="product_meta_description" class="textarea"></textarea>
     </div>
-    <br>
-    <div class="col-lg-12">
-        <input type="file" name="product_meta_image" id="product_meta_image" multiple>
-        <label class="custom-file-label" for="product_meta_image">Choose Product Meta Image</label>
-    </div>
 </div>
