@@ -26,4 +26,13 @@ class Product extends Model
             ]
         ];
     }
+
+    /* ------ Polymorphic Product Image Relation -------- */
+
+    public function image()
+    {
+        return $this->morphMany(Productimage::class, 'productimageable');
+    }
+
+    /* ------------------------------------------------ */
 }

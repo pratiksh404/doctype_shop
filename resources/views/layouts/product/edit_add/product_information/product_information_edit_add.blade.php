@@ -15,15 +15,15 @@
         <div class="tab-content" id="vert-tabs-tabContent">
             <div class="tab-pane text-left fade show active" id="vert-tabs-basic-info" role="tabpanel"
                 aria-labelledby="vert-tabs-basic-info-tab">
-                @include('shop::layouts.product.vertical_tab.basic_info')
+                @include('shop::layouts.product.edit_add.product_information.vertical_tab.basic_info')
             </div>
             <div class="tab-pane fade" id="vert-tabs-product-value" role="tabpanel"
                 aria-labelledby="vert-tabs-product-value-tab">
-                @include('shop::layouts.product.vertical_tab.product_value')
+                @include('shop::layouts.product.edit_add.product_information.vertical_tab.product_value')
             </div>
             <div class="tab-pane fade" id="vert-tabs-product-seo" role="tabpanel"
                 aria-labelledby="vert-tabs-product-seo-tab">
-                @include('shop::layouts.product.vertical_tab.product_seo')
+                @include('shop::layouts.product.edit_add.product_information.vertical_tab.product_seo')
             </div>
         </div>
     </div>

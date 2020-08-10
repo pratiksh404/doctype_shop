@@ -17,12 +17,26 @@ class ProductController extends Controller
         return view('shop::product.index');
     }
 
-    public function create()
+    /*     public function create()
     {
         $product_categories = ProductCategory::all(['id', 'category_name']);
         $product_sub_categories = ProductSubCategory::all(['id', 'sub_category_name']);
         $product_brands = Brand::all(['id', 'brand_name']);
         return view('shop::product.create', compact('product_categories', 'product_sub_categories', 'product_brands'));
+    } */
+
+    public function product_information_create()
+    {
+        $product_categories = ProductCategory::all(['id', 'category_name']);
+        $product_sub_categories = ProductSubCategory::all(['id', 'sub_category_name']);
+        $product_brands = Brand::all(['id', 'brand_name']);
+        return view('shop::product.create.product_information', compact('product_categories', 'product_sub_categories', 'product_brands'));
+    }
+
+    public function product_image_create($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('shop::product.create.product_image', compact('product'));
     }
 
     public function store(Request $request)
@@ -64,6 +78,18 @@ class ProductController extends Controller
                 'product_meta_name' => 'max:255',
                 'product_meta_description' => 'max:5000'
             ]
+        );
+    }
+
+    private function productImageValidate()
+    {
+        return tap(
+            request()->validate([
+                'product_image_type' => 'required|numeric'
+            ]),
+            function () {
+                request()->has('product_image') ? request()->validate(['product_image' => 'required|file|image|max:3000']) : '';
+            }
         );
     }
 
