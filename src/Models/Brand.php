@@ -3,12 +3,12 @@
 namespace doctype_admin\Shop\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
-use drh2so4\Thumbnail\Traits\thumbnail;
+use drh2so4\Thumbnail\Traits\Thumbnail;
 use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-    use thumbnail;
+    use Thumbnail;
     use Sluggable;
 
     protected $guarded = [];

@@ -404,12 +404,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pratiksh404/laravel-thumbnails.git",
-                "reference": "f8a0286e0e918abfb9574b17d74ccc5c2209c3ab"
+                "reference": "c0e3802e62fd3902f79f3f7955afc5b9e3ce9710"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pratiksh404/laravel-thumbnails/zipball/f8a0286e0e918abfb9574b17d74ccc5c2209c3ab",
-                "reference": "f8a0286e0e918abfb9574b17d74ccc5c2209c3ab",
+                "url": "https://api.github.com/repos/pratiksh404/laravel-thumbnails/zipball/c0e3802e62fd3902f79f3f7955afc5b9e3ce9710",
+                "reference": "c0e3802e62fd3902f79f3f7955afc5b9e3ce9710",
                 "shasum": ""
             },
             "require": {
@@ -454,7 +454,7 @@
                 "pratikshrestha",
                 "thumbnail generator"
             ],
-            "time": "2020-07-28T07:20:31+00:00"
+            "time": "2020-08-11T13:42:28+00:00"
         },
         {
             "name": "egulias/email-validator",

@@ -2,13 +2,14 @@
 
 namespace doctype_admin\Shop\Models;
 
-use drh2so4\Thumbnail\Traits\thumbnail;
+
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use drh2so4\Thumbnail\Traits\Thumbnail;
 
 class Product extends Model
 {
-    use thumbnail;
+    use Thumbnail;
     use Sluggable;
 
     protected $guarded = [];
@@ -29,7 +30,7 @@ class Product extends Model
 
     /* ------ Polymorphic Product Image Relation -------- */
 
-    public function image()
+    public function images()
     {
         return $this->morphMany(Productimage::class, 'productimageable');
     }

@@ -16,9 +16,9 @@ Route::resource('/brand', 'BrandController');
 
 Route::resource('/product', 'ProductController');
 
-Route::get('/product/product-information/create', 'ProductController@product_information_create');
+Route::get('/product/{product}/product-image/create', 'ProductImageController@create');
 
-Route::get('/product/product-image/{product}/create', 'ProductController@product_image_create');
+Route::post('/product/{product}/product-image', 'ProductImageController@store');
 
 /* ====================================Check Slug===================================== */
 Route::get('/check_category_slug', 'ProductCategoryController@check_category_slug')->name('check_category_slug');

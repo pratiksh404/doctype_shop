@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-lg-10">
         <input type="hidden" name="product_image_type" value="1">
-        <input type="file" name="product_image" id="" multiple>
+        <input type="file" name="product_images[]" id="" multiple>
     </div>
     <div class="col-lg-2">
         <input type="submit" value="Upload" class="btn btn-primary">

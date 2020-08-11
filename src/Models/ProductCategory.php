@@ -2,13 +2,13 @@
 
 namespace doctype_admin\Shop\Models;
 
-use drh2so4\Thumbnail\Traits\thumbnail;
+use drh2so4\Thumbnail\Traits\Thumbnail;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class ProductCategory extends Model
 {
-    use thumbnail;
+    use Thumbnail;
     use Sluggable;
 
     protected $guarded = [];
