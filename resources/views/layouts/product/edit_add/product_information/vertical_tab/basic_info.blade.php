@@ -79,3 +79,18 @@
             data-off-color="danger" data-on-color="success" value="1">
     </div>
 </div>
+<br>
+<div class="row">
+    <div class="col-lg-12">
+        {{-- Tagging --}}
+        <label for="tags">Product Tags</label>
+        <input type="text" name="tags" id="tags" style="width:100%">
+        <script>
+            var tags = [
+                           @foreach ($tags as $tag)
+                           {tag: "{{$tag}}" },
+                           @endforeach
+                       ];
+        </script>
+    </div>
+</div>

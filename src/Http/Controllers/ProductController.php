@@ -22,23 +22,43 @@ class ProductController extends Controller
         $product_categories = ProductCategory::all(['id', 'category_name']);
         $product_sub_categories = ProductSubCategory::all(['id', 'sub_category_name']);
         $product_brands = Brand::all(['id', 'brand_name']);
-        return view('shop::product.create.product_information', compact('product_categories', 'product_sub_categories', 'product_brands'));
+        /* Retriving Tags */
+        $tags = config('shop.product_tagging', 'true') == true ? Product::existingTags()->pluck('name') : false;
+
+        return view('shop::product.create.product_information', compact('product_categories', 'product_sub_categories', 'product_brands', 'tags'));
     }
 
     public function store(Request $request)
     {
         $product = Product::create($this->validateData());
+        if (config('blog.product_tagging', 'true')) {
+            /* Assigning tags */
+            $product->tag(explode(',', $request->tags));
+        }
         return redirect(config('shop.prefix', 'admin/shop') .  '/product');
     }
 
     public function edit(Product $product)
     {
-        return view('shop::product.edit', compact('product'));
+        /* Retriving tags */
+        $tags = config('blog.product_tagging', 'true') == true ? $product->existingTags()->pluck('name') : false;
+        $remove_tags = config('blog.product_tagging', 'true') == true ? $product->tagged->pluck('tag_name') : false;
+        return view('shop::product.edit', compact('product', 'tags', 'remove_tags'));
     }
 
     public function update(Request $request, Product $product)
     {
         $product->update($this->validateData($product->id));
+        if (config('blog.product_tagging', 'true')) {
+            /* Assigning tags */
+            $product->tag(explode(',', $request->tags));
+            /* ---------------- */
+            /* Removing tags */
+            if (!empty($request->remove_tags)) {
+                $product->untag($request->remove_tags);
+            }
+            /* ------------------ */
+        }
         return redirect(config('shop.prefix', 'admin/shop') .  '/product');
     }
 
@@ -62,7 +82,8 @@ class ProductController extends Controller
                 'product_published' => 'required|numeric',
                 'product_stock' => 'required|numeric',
                 'product_meta_name' => 'max:255',
-                'product_meta_description' => 'max:5000'
+                'product_meta_description' => 'max:5000',
+                'product_meta_keywords' => 'sometimes'
             ]
         );
     }

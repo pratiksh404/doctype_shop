@@ -6,7 +6,9 @@ Route::resource('/category', 'ProductCategoryController');
 
 Route::resource('/subcategory', 'ProductSubCategoryController');
 
-Route::resource('/attribute', 'ProductAttributeController');
+Route::resource('/attribute', 'AttributeController');
+
+Route::resource('/attrvalue', 'AttributeValueController');
 
 Route::resource('/color', 'ColorController');
 

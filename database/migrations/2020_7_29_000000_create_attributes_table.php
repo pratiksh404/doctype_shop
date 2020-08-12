@@ -1,10 +1,11 @@
 <?php
 
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductAttributeValuesTable extends Migration
+class CreateAttributesTable extends Migration
 {
     /**
      *
@@ -15,12 +16,13 @@ class CreateProductAttributeValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_attribute_values', function (Blueprint $table) {
+        Schema::create('attributes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_attribute_id');
-            $table->foreign('product_attribute_id')->references('id')->on('product_attributes');
-            $table->text('value');
-            $table->text('price');
+            $table->string('product_attribute_code')->unique();
+            $table->string('product_attribute_name');
+            $table->integer('input_type');
+            $table->boolean('is_filterable')->default(0);
+            $table->boolean('is_required')->default(0);
             $table->timestamps();
         });
     }
@@ -34,6 +36,6 @@ class CreateProductAttributeValuesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_attribute_values');
+        Schema::drop('attributes');
     }
 }

@@ -34,6 +34,7 @@ class CreateProductsTable extends Migration
             $table->string('product_stock')->default(0);
             $table->string('product_meta_name')->nullable();
             $table->text('product_meta_description')->nullable();
+            $table->json('product_meta_keywords')->nullable();
             $table->timestamps();
         });
     }

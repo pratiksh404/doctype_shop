@@ -4,7 +4,7 @@ namespace doctype_admin\Shop\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductAttributeValue extends Model
+class Attrvalue extends Model
 {
     protected $guarded = [];
 

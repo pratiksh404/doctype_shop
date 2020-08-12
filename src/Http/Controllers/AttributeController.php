@@ -2,16 +2,16 @@
 
 namespace doctype_admin\Shop\Http\Controllers;
 
-use doctype_admin\Shop\Models\ProductAttribute;
+use doctype_admin\Shop\Models\Attribute;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Request;
 
-class ProductAttributeController extends Controller
+class AttributeController extends Controller
 {
     public function index()
     {
-        $product_attributes = ProductAttribute::all();
-        return view('shop::attribute.index', compact('product_attributes'));
+        $attributes = Attribute::all();
+        return view('shop::attribute.index', compact('attributes'));
     }
 
     public function create()
@@ -21,22 +21,22 @@ class ProductAttributeController extends Controller
 
     public function store(Request $request)
     {
-        ProductAttribute::create($this->validateData());
+        Attribute::create($this->validateData());
         return redirect(config('shop.prefix', 'admin/shop') .  '/attribute');
     }
 
-    public function edit(ProductAttribute $attribute)
+    public function edit(Attribute $attribute)
     {
         return view('shop::attribute.edit', compact('attribute'));
     }
 
-    public function update(Request $request, ProductAttribute $attribute)
+    public function update(Request $request, Attribute $attribute)
     {
         $attribute->update($this->validateData($attribute->id));
         return redirect(config('shop.prefix', 'admin/shop') .  '/attribute');
     }
 
-    public function destroy(ProductAttribute $attribute)
+    public function destroy(Attribute $attribute)
     {
         $attribute->delete();
         return redirect(config('shop.prefix', 'admin/shop') .  '/attribute');
@@ -45,7 +45,7 @@ class ProductAttributeController extends Controller
     private function validateData($id = null)
     {
         return request()->validate([
-            'product_attribute_code' => 'required|max:50|unique:product_attributes,product_attribute_code,' . $id ?? '',
+            'product_attribute_code' => 'required|max:50|unique:attributes,product_attribute_code,' . $id ?? '',
             'product_attribute_name' => 'required|max:100',
             'input_type' => 'required|numeric',
             'is_filterable' => 'required|bool',

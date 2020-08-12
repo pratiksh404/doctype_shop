@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Product Attribute')
+@section('title', 'Product Attribute Value')
 
 @section('content_header')
 
@@ -9,13 +9,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Product Attribute</h1>
+                <h1>Product Attribute Value</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a
                             href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Product Attribute</li>
+                    <li class="breadcrumb-item active">Product Attribute Value</li>
                 </ol>
             </div>
         </div>
@@ -32,10 +32,10 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Make Product Attribute</h3>
+                    <h3 class="card-title">Make Product Attribute Value</h3>
                     <button type="button" class="btn btn-default">
                         <a href="{{url(config('setting.prefix', 'admin/shop') . '/attribute/create')}}">Create Product
-                            Attribute</a>
+                            Attribute Value</a>
                     </button>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                                 </button>
 
                                 {{-- ------------------- Delete Product Attribute Modal ---------------------------}}
-                                @include('shop::layouts.attribute.delete_modal')
+                                @include('shop::layouts.attribute_value.delete_modal')
                                 {{-- -------------------- End Delete Product Attribute Modal--------------------------- --}}
                             </td>
                             {{--  @include('blog::layouts.Attribute.confirm_delete') --}}
