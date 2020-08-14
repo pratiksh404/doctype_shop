@@ -17,10 +17,9 @@ class CreateAttrvaluesTable extends Migration
     {
         Schema::create('attrvalues', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('attribute_id');
-            $table->foreign('attribute_id')->references('id')->on('attributes');
             $table->text('value');
-            $table->text('price');
+            $table->unsignedBigInteger('attrvalueable_id');
+            $table->string('attrvalueable_type');
             $table->timestamps();
         });
     }

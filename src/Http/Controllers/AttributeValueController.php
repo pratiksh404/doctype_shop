@@ -2,39 +2,34 @@
 
 namespace doctype_admin\Shop\Http\Controllers;
 
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Http\Request;
+use doctype_admin\Shop\Models\Attribute;
 use doctype_admin\Shop\Models\Attrvalue;
+use Illuminate\Database\Migrations\Migration;
 
 class AttributeValueController extends Migration
 {
-    public function index()
+    public function create($attribute_id)
     {
-        return view('shop::attribute_value.index');
+        $attributes = Attribute::all(['id', 'product_attribute_name']);
+        return view("shop::attribute_value.create", compact('attributes', 'attribute_id'));
     }
 
     public function store(Request $request)
     {
-        Attrvalue::create($this->validateData());
-        return redirect(config('shop.prefix', 'admin') .  '/attrvalue');
-    }
-
-    public function update(Request $request, Attrvalue $attrvalue)
-    {
-        $attrvalue->update($this->validateData($attrvalue->id));
-        return redirect(config('shop.prefix', 'admin') .  '/attrvalue');
+        $attribute = Attribute::where('id', request()->product_attribute_id)->firstOrFail();
+        $attrvalues = explode(',', request()->attrvalues);
+        foreach ($attrvalues as $attrvalue) {
+            $attribute->attrvalues()->create([
+                'value' => $attrvalue
+            ]);
+        }
+        return redirect(config('shop.prefix', 'admin/shop') .  '/attrvalue');
     }
 
     public function destroy(Attrvalue $attrvalue)
     {
         $attrvalue->delete();
-        return redirect(config('shop.prefix', 'admin') .  '/attrvalue');
-    }
-
-    private function validateData($id = null)
-    {
-        return request()->validate([
-            'product_attribute_id' => 'required|numeric',
-            'value' => 'requierd',
-        ]);
+        return redirect(config('shop.prefix', 'admin/shop') .  '/attribute');
     }
 }

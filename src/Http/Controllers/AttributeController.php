@@ -10,7 +10,7 @@ class AttributeController extends Controller
 {
     public function index()
     {
-        $attributes = Attribute::all();
+        $attributes = Attribute::with('attrvalues')->get();
         return view('shop::attribute.index', compact('attributes'));
     }
 

@@ -1,5 +1,5 @@
 <script>
-    $(function() {
+        $(function() {
             // Select2
             $('.select2').select2()
 
@@ -19,13 +19,25 @@
                 "info": true,
             });
 
-            $('document').ready(function(){              
-if($('#product_attribute_code').val().length == 0)
-{
-    var code = 'attribute' + Math.floor((Math.random() * 10000) + 1);
-                    $('#product_attribute_code').val(code);          
-}
-});
+               // Attribute Value
+                
+                $('#attrvalues').selectize({
+                plugins: ['restore_on_backspace'],
+                plugins: ['remove_button'],
+                delimiter: ',',
+                persist: false,
+                valueField: 'attrvalue',
+                labelField: 'attrvalue',
+                searchField: 'attrvalue',
+                options: attrvalues,
+                items : attrvalues,
+                create: function(input,callback) {
+                return {
+                attrvalue: input
+                },
+                callback({ attrvalue: input });
+                }
+                });
 
         });
 

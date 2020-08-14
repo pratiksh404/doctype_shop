@@ -22,4 +22,13 @@ class Attribute extends Model
             4 => "Text Area"
         ][$attribute];
     }
+
+    /* ------ Polymorphic Attribute Attrvalue Relation -------- */
+
+    public function attrvalues()
+    {
+        return $this->morphMany(Attrvalue::class, 'attrvalueable');
+    }
+
+    /* ------------------------------------------------ */
 }

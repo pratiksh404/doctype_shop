@@ -8,8 +8,10 @@ class Attrvalue extends Model
 {
     protected $guarded = [];
 
-    public function attribute()
+    // Polymorphic Belongs To Attribute
+
+    public function attrvalueable()
     {
-        return $this->belongsTo(ProductAttribute::class);
+        return $this->morphTo();
     }
 }

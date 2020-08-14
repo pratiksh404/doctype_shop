@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Create Product Attribute')
+@section('title', 'Create Product Attribute Value')
 
 @section('content_header')
 
@@ -19,7 +19,7 @@
                             href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'attribute') }}">Product
                             Attribute</a>
                     </li>
-                    <li class="breadcrumb-item active">Create Product Attribute</li>
+                    <li class="breadcrumb-item active">Create Product Attribute Value</li>
                 </ol>
             </div>
         </div>
@@ -35,13 +35,13 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Create Product Attribute</h3>
+                <h3 class="card-title">Create Product Attribute Value</h3>
             </div>
             <div class="card-body">
 
-                <form action="{{ url(config('shop.prefix', 'admin/shop') . '/attribute')}}" method="post">
+                <form action="{{ url(config('shop.prefix', 'admin/shop') . '/attrvalue')}}" method="post">
                     @csrf
-                    @include('shop::layouts.attribute.edit_add')
+                    @include('shop::layouts.attribute_value.edit_add')
                 </form>
 
             </div>
@@ -57,5 +57,5 @@
     @stop
 
     @section('js')
-    @include('shop::layouts.attribute.scripts')
+    @include('shop::layouts.attribute_value.scripts')
     @stop

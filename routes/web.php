@@ -8,8 +8,6 @@ Route::resource('/subcategory', 'ProductSubCategoryController');
 
 Route::resource('/attribute', 'AttributeController');
 
-Route::resource('/attrvalue', 'AttributeValueController');
-
 Route::resource('/color', 'ColorController');
 
 Route::resource('/size', 'SizeController');
@@ -21,6 +19,14 @@ Route::resource('/product', 'ProductController');
 Route::get('/product/{product}/product-image/create', 'ProductImageController@create');
 
 Route::post('/product/{product}/product-image', 'ProductImageController@store');
+
+/* ================== Attribute Value Routes ====================== */
+Route::get('/attrvalue/create/{attribute}', 'AttributeValueController@create');
+
+Route::post('/attrvalue', 'AttributeValueController@store');
+
+Route::delete('/attrvalue/{attrvalue}', 'AttributeValueController@store');
+/* ================================================================ */
 
 /* ====================================Check Slug===================================== */
 Route::get('/check_category_slug', 'ProductCategoryController@check_category_slug')->name('check_category_slug');

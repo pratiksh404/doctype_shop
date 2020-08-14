@@ -19,7 +19,7 @@
                             href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'attribute') }}">Product
                             Attribute</a>
                     </li>
-                    <li class="breadcrumb-item active">Edit Product Category</li>
+                    <li class="breadcrumb-item active">Edit Product Attribute</li>
                 </ol>
             </div>
         </div>

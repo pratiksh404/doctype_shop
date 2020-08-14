@@ -48,6 +48,7 @@
                             <th>Input Type</th>
                             <th>Filterable ?</th>
                             <th>Required ?</th>
+                            <th>Values</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -63,6 +64,15 @@
                             </td>
                             <td><i
                                     class="fa fa-dot-circle text-{{ $attribute->is_required ? 'success' : 'danger'}}"></i>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#attribute-value-{{ $attribute->id }}">
+                                    <i class="fas fa-database"></i>
+                                </button>
+                                {{-- ------------------- Delete Product Attribute Modal ---------------------------}}
+                                @include('shop::layouts.attribute.attrvalue_modal')
+                                {{-- -------------------- End Delete Product Attribute Modal--------------------------- --}}
                             </td>
                             <td class="d-flex justify-content-around">
 
@@ -87,10 +97,12 @@
                     </tbody>
                     <tfoot>
                         <tr>
+                            <th>Attribute Code</th>
                             <th>Attribute Name</th>
                             <th>Input Type</th>
                             <th>Filterable ?</th>
                             <th>Required ?</th>
+                            <th>Values</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
