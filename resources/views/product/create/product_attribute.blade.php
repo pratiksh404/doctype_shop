@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Create Product Attribute Value')
+@section('title', 'Create Product Attribute')
 
 @section('content_header')
 
@@ -15,11 +15,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a
                             href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a
-                            href="{{ url(config('setting.prefix', 'admin/shop') . '/' . 'attribute') }}">Product
-                            Attribute</a>
-                    </li>
-                    <li class="breadcrumb-item active">Create Product Attribute Value</li>
+                    <li class="breadcrumb-item active">Create Product Attribute</li>
                 </ol>
             </div>
         </div>
@@ -35,15 +31,17 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Create Product Attribute Value</h3>
+                <div class="d-flex justify-content-between">
+                    <h3 class="card-title">Create Product Attribute</h3>
+                    <span class="show_product_code textx-secondary"></span>
+                </div>
             </div>
             <div class="card-body">
-
-                <form action="{{ url(config('shop.prefix', 'admin/shop') . '/attrvalue')}}" method="POST">
+                <form action="{{url(config('shop.prefix', 'admin/shop') . '/product/'.$product->id.'/product-image')}}"
+                    method="POST" enctype="multipart/form-data">
                     @csrf
-                    @include('shop::layouts.attribute_value.edit_add')
+                    @include('shop::layouts.product.edit_add.product_attribute.product_attribute_edit_add')
                 </form>
-
             </div>
         </div>
     </div>
@@ -53,9 +51,10 @@
     @stop
 
     @section('css')
-    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
+    <link rel=" stylesheet" href="{{ asset('css/admin_custom.css') }}">
+    @include('shop::layouts.product.links')
     @stop
 
     @section('js')
-    @include('shop::layouts.attribute_value.scripts')
+    @include('shop::layouts.product.edit_add.product_attribute.scripts')
     @stop

@@ -18,14 +18,18 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $brand = Brand::create($this->validateData());
-        $this->uploadImage($brand);
+        if (request()->brand_image) {
+            $this->uploadImage($brand);
+        }
         return redirect(config('shop.prefix', 'admin/shop') .  '/brand');
     }
 
     public function update(Request $request, Brand $brand)
     {
         $brand->update($this->validateData());
-        $this->uploadImage($brand);
+        if (request()->brand_image) {
+            $this->uploadImage($brand);
+        }
         return redirect(config('shop.prefix', 'admin/shop') .  '/brand');
     }
 

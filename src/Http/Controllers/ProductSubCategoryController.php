@@ -25,7 +25,9 @@ class ProductSubCategoryController extends Controller
     public function store(Request $request)
     {
         $subcategory = ProductSubCategory::create($this->validateData());
-        $this->uploadImage($subcategory);
+        if (request()->sub_category_image) {
+            $this->uploadImage($subcategory);
+        }
         return redirect(config('shop.prefix', 'admin/shop') .  '/subcategory');
     }
 
@@ -38,7 +40,9 @@ class ProductSubCategoryController extends Controller
     public function update(Request $request, ProductSubCategory $subcategory)
     {
         $subcategory->update($this->validateData($subcategory));
-        $this->uploadImage($subcategory);
+        if (request()->sub_category_image) {
+            $this->uploadImage($subcategory);
+        }
         return redirect(config('shop.prefix', 'admin/shop') .  '/subcategory');
     }
 

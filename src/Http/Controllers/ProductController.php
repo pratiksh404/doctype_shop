@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Request;
 use doctype_admin\Shop\Models\ProductCategory;
 use doctype_admin\Shop\Models\ProductSubCategory;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use doctype_admin\Shop\Models\Attribute;
 
 class ProductController extends Controller
 {
@@ -33,7 +34,7 @@ class ProductController extends Controller
         $product = Product::create($this->validateData());
         if (config('blog.product_tagging', 'true')) {
             /* Assigning tags */
-            $product->tag(explode(',', $request->tags));
+            $product->tag(explode(',', request()->tags));
         }
         return redirect(config('shop.prefix', 'admin/shop') .  '/product');
     }
@@ -51,15 +52,35 @@ class ProductController extends Controller
         $product->update($this->validateData($product->id));
         if (config('blog.product_tagging', 'true')) {
             /* Assigning tags */
-            $product->tag(explode(',', $request->tags));
+            $product->tag(explode(',', request()->tags));
             /* ---------------- */
             /* Removing tags */
-            if (!empty($request->remove_tags)) {
-                $product->untag($request->remove_tags);
+            if (!empty(request()->remove_tags)) {
+                $product->untag(request()->remove_tags);
             }
             /* ------------------ */
         }
         return redirect(config('shop.prefix', 'admin/shop') .  '/product');
+    }
+
+    public function findsubcategory(Request $request)
+    {
+        $product_category_id = request()->product_category_id;
+
+        $subcategories = ProductSubCategory::where('id', $product_category_id)->firstOrFail();
+
+        return response()->json([
+            'subcategories' => $subcategories
+        ]);
+    }
+
+    public function findproductattribute()
+    {
+        $product_attributes_ids = request()->product_attributes;
+        $product_attributes = is_array($product_attributes_ids) ? Attribute::where('id', $product_attributes_ids)->with('attrvalues')->get() : null;
+        return response()->json([
+            'product_attributes' => $product_attributes
+        ]);
     }
 
     private function validateData($id = null)

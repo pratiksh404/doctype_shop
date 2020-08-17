@@ -44,7 +44,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <a href="{{url(config('setting.prefix', 'admin/shop') . '/attrvalue/create')}}"><button
+                <a href="{{url(config('setting.prefix', 'admin/shop') . '/attrvalue/create').'/'.$attribute->id}}"><button
                         class="btn btn-primary">Add Value</button></a>
             </div>
         </div>

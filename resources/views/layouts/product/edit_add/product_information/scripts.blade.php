@@ -45,6 +45,31 @@
                   $('#product_meta_name').val(product_name);
                 });
 
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                    });
+
+                // Product Category dependent Sub-Category
+              $('#product_category_id').on('change',function(){
+                var product_category_id = $(this).val();
+                if(product_category_id) {
+        $.ajax({
+          url: "{{ route('findsubcategory') }}",
+                    type:"POST",
+                    data: {
+                    'product_category_id': product_category_id
+                    },
+                    success:function(data) {
+                    $.each(data,function(key,subcategory){
+                      $('select[name="product_sub_category_id"]').append('<option value="'+ subcategory.id +'" {{isset($product) ? '+ subcategory.id +' == $product->product_sub_category_id ? "selected" : "" : ""}}>' + subcategory.sub_category_name+ '</option>');
+                    });
+                    }
+        });
+                }
+              });
+
                 // Product Tags
 
                 $('#tags').selectize({

@@ -89,6 +89,7 @@
                         <tr>
                             <th>id</th>
                             <th>Brand</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>

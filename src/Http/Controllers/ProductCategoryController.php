@@ -23,7 +23,9 @@ class ProductCategoryController extends Controller
     public function store(Request $request)
     {
         $category = ProductCategory::create($this->validateData());
-        $this->uploadImage($category);
+        if (request()->category_image) {
+            $this->uploadImage($category);
+        }
         return redirect(config('shop.prefix', 'admin/shop') .  '/category');
     }
 
@@ -35,7 +37,9 @@ class ProductCategoryController extends Controller
     public function update(Request $request, ProductCategory $category)
     {
         $category->update($this->validateData($category));
-        $this->uploadImage($category);
+        if (request()->category_image) {
+            $this->uploadImage($category);
+        }
         return redirect(config('shop.prefix', 'admin/shop') .  '/category');
     }
 

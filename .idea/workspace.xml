@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab20af12-7aad-4e5f-a946-6901c0ee8cdf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Http/Controllers/ProductImageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/doctype_shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/doctype_shop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Productimage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Productimage.php" afterDir="false" />
-    </list>
+    <list default="true" id="ab20af12-7aad-4e5f-a946-6901c0ee8cdf" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -121,6 +112,7 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
     </include_path>
   </component>
   <component name="ProjectId" id="1fWalCkSnG6in998ryNJc2YQaoY" />
@@ -152,6 +144,7 @@
       <updated>1596336450340</updated>
       <workItem from="1596336452928" duration="134000" />
       <workItem from="1597128008745" duration="508000" />
+      <workItem from="1597491993142" duration="54000" />
     </task>
     <servers />
   </component>

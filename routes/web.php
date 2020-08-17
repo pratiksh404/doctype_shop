@@ -20,12 +20,24 @@ Route::get('/product/{product}/product-image/create', 'ProductImageController@cr
 
 Route::post('/product/{product}/product-image', 'ProductImageController@store');
 
+Route::get('/product/{product}/product-attribute/create', 'ProductAttributeController@create');
+
+Route::get('/product/{product}/product-attribute', 'ProductAttributeController@store');
+
+/* =============== Porduct Dependent field AJAX Requests ===========================*/
+
+Route::post('/product/findsubcategory', 'ProductController@findsubcategory')->name('findsubcategory');
+
+Route::post('/product/findproductattribute', 'ProductController@findproductattribute')->name('productattribute');
+
+/* ================================================================================ */
+
 /* ================== Attribute Value Routes ====================== */
-Route::get('/attrvalue/create/{attribute}', 'AttributeValueController@create');
+Route::get('/attrvalue/create/{attribute?}', 'AttributeValueController@create');
 
 Route::post('/attrvalue', 'AttributeValueController@store');
 
-Route::delete('/attrvalue/{attrvalue}', 'AttributeValueController@store');
+Route::delete('/attrvalue/{attrvalue}', 'AttributeValueController@destroy');
 /* ================================================================ */
 
 /* ====================================Check Slug===================================== */

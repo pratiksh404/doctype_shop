@@ -9,7 +9,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class AttributeValueController extends Migration
 {
-    public function create($attribute_id)
+    public function create($attribute_id = null)
     {
         $attributes = Attribute::all(['id', 'product_attribute_name']);
         return view("shop::attribute_value.create", compact('attributes', 'attribute_id'));
@@ -24,7 +24,7 @@ class AttributeValueController extends Migration
                 'value' => $attrvalue
             ]);
         }
-        return redirect(config('shop.prefix', 'admin/shop') .  '/attrvalue');
+        return redirect(config('shop.prefix', 'admin/shop') .  '/attribute');
     }
 
     public function destroy(Attrvalue $attrvalue)

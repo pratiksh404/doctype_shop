@@ -17,7 +17,9 @@
 <div class="row">
     <div class="col-lg-4">
         <label for="product_category_id">Category<span class="text-danger">*</span></label>
-        <select class="form-control select2" style="width: 100%;" name="product_category_id" id="product_category_id">
+        <select class="form-control select2" style="width: 100%;" name="product_category_id" id="product_category_id"
+            data-placeholder="Category">
+            <option value="null">Category...</option>
             @foreach ($product_categories as $parent_category)
             <option value="{{$parent_category->id}}"
                 {{isset($product) ? $parent_category->id == $product->product_category_id ? 'selected' : '' : ''}}>
@@ -28,17 +30,13 @@
     <div class="col-lg-4">
         <label for="product_sub_category_id">Sub Category<span class="text-danger">*</span></label>
         <select class="form-control select2" style="width: 100%;" name="product_sub_category_id"
-            id="product_sub_category_id">
-            @foreach ($product_sub_categories as $sub_category)
-            <option value="{{$sub_category->id}}"
-                {{isset($product) ? $sub_category->id == $product->product_sub_category_id ? 'selected' : '' : ''}}>
-                {{$sub_category->sub_category_name}}</option>
-            @endforeach
+            id="product_sub_category_id" data-placeholder="Sub Category..">
         </select>
     </div>
     <div class="col-lg-4">
         <label for="brand_id">Brand<span class="text-danger">*</span></label>
-        <select class="form-control select2" style="width: 100%;" name="brand_id" id="brand_id">
+        <select class="form-control select2" style="width: 100%;" name="brand_id" id="brand_id"
+            data-placeholder="Brand..">
             @foreach ($product_brands as $brand)
             <option value="{{$brand->id}}"
                 {{isset($product) ? $brand->id == $product->brand_id ? 'selected' : '' : ''}}>
