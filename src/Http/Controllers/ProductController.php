@@ -77,7 +77,7 @@ class ProductController extends Controller
     public function findproductattribute()
     {
         $product_attributes_ids = request()->product_attributes;
-        $product_attributes = is_array($product_attributes_ids) ? Attribute::where('id', $product_attributes_ids)->with('attrvalues')->get() : null;
+        $product_attributes = is_array($product_attributes_ids) ? Attribute::whereIn('id', $product_attributes_ids)->with('attrvalues')->get() : null;
         return response()->json([
             'product_attributes' => $product_attributes
         ]);
