@@ -31,4 +31,9 @@ class Attribute extends Model
     }
 
     /* ------------------------------------------------ */
+
+    public function products()
+    {
+        return $this->morphedByMany(Product::class, 'attributeable');
+    }
 }
