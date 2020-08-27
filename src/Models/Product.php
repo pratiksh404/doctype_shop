@@ -48,8 +48,15 @@ class Product extends Model
 
     /* ------------------------------------------------ */
 
-    public function attributes()
+    /* public function attributes()
     {
         return $this->morphToMany(Attribute::class, 'attributeable');
+    } */
+
+    /* Many to Many Product & Attribute Relation */
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class, 'attribute_product')->withTimestamps();
     }
+    /* ---------------------------------------- */
 }

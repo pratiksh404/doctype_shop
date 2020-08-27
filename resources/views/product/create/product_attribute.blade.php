@@ -37,8 +37,9 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{url(config('shop.prefix', 'admin/shop') . '/product/'.$product->id.'/product-image')}}"
-                    method="POST" enctype="multipart/form-data">
+                <form
+                    action="{{url(config('shop.prefix', 'admin/shop') . '/product'.'/'.$product->id.'/product-attribute')}}"
+                    method="POST">
                     @csrf
                     @include('shop::layouts.product.edit_add.product_attribute.product_attribute_edit_add')
                 </form>

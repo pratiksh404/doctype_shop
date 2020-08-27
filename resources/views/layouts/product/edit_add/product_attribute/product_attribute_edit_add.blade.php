@@ -12,3 +12,5 @@
 <div id="product_attributes_values" class="product_attributes_values" style="height: 60vh">
 
 </div>
+
+<input type="submit" value="Submit" class="bt btn-primary" id="product_attribute_submit_button" disabled>

@@ -22,7 +22,7 @@ Route::post('/product/{product}/product-image', 'ProductImageController@store');
 
 Route::get('/product/{product}/product-attribute/create', 'ProductAttributeController@create');
 
-Route::get('/product/{product}/product-attribute', 'ProductAttributeController@store');
+Route::post('/product/{product}/product-attribute', 'ProductAttributeController@store');
 
 /* =============== Porduct Dependent field AJAX Requests ===========================*/
 

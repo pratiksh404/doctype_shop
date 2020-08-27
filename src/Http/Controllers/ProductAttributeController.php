@@ -16,6 +16,17 @@ class ProductAttributeController extends Controller
         return view('shop::product.create.product_attribute', compact('product', 'attributes'));
     }
 
-    public function store(Request $request)
-    { }
+    public function store($id)
+    {
+        $product = Product::findOrFail($id);
+        if (request()->product_attributes) {
+            $product->attributes()->sync(request()->product_attributes);
+            foreach ($product->attributes as $attribute) {
+                $attribute_value_fieldname = $attribute->product_attribute_name;
+                if (request()->$attribute_value_fieldname) {
+                    $attribute->product_attributes_value->sync(request()->$attribute_value_fieldname);
+                }
+            }
+        }
+    }
 }
